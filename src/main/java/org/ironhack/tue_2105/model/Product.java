@@ -1,6 +1,9 @@
 package org.ironhack.tue_2105.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
@@ -11,8 +14,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El nombre es obligatorio")
     private String name;
 
+    @Min(value = 0, message = "El valor debe de ser positivo")
     private Double price;
 
     public Product() {
